@@ -1,5 +1,5 @@
 from modelos.avaliacao import Avaliacao
-
+from modelos.cardapio.item_cardapio import ItemCardapio
 class Restaurante:
     restaurantes = []
 
@@ -8,6 +8,7 @@ class Restaurante:
         self._categoria = categoria.upper()
         self._ativo = False
         self._avaliacao = []
+        self._cardapio = []
         Restaurante.restaurantes.append(self)
     
     def __str__(self):
@@ -38,3 +39,22 @@ class Restaurante:
         quantidade_de_notas = len(self._avaliacao)
         media = round(soma_das_notas / quantidade_de_notas, 1)
         return media
+
+
+    def adicionar_item(self, item):
+        if isinstance(item, ItemCardapio):
+            self._cardapio.append(item)
+
+    @property
+    def listar_cardapio(self):
+        print(f'Cardápio do restaurante {self._nome}\n')
+        for indice, item in enumerate(self._cardapio):
+            if hasattr(item, 'descricao'):
+                print( f"{indice + 1}) {item._nome}".ljust(20),f" | Preço: R${item._preco}".ljust(20), f" | Descrição: {item.descricao}")
+                
+            elif hasattr(item, 'tamanho'):
+                print( f"{indice + 1}) {item._nome}".ljust(20),f" | Preço: R${item._preco}".ljust(20),f" | Tamanho: {item.tamanho}")
+            
+            elif hasattr(item, 'sabor'):
+                    print( f"{indice + 1}) {item._nome}".ljust(20),f" | Preço: R${item._preco}".ljust(20),f" | Sabor: {item.sabor}")
+                
