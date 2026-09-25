@@ -57,4 +57,5 @@ class Restaurante:
             
             elif hasattr(item, 'sabor'):
                     print( f"{indice + 1}) {item._nome}".ljust(20),f" | Preço: R${item._preco}".ljust(20),f" | Sabor: {item.sabor}")
+        
                 
