@@ -17,9 +17,9 @@ prato_bife.aplicar_desconto
 sobremesa_bolo.aplicar_desconto
 
 ##ADICIONANDO OS PRATOS DENTRO DA CLASSE RESTAURANTE
-restaurante_praca.adicionar_item(prato_bife)
-restaurante_praca.adicionar_item(bebida_suco)
-restaurante_praca.adicionar_item(sobremesa_bolo)
+restaurante_praca.adicionar_item(prato_bife)  
+restaurante_praca.adicionar_item(bebida_suco) 
+restaurante_praca.adicionar_item(sobremesa_bolo) 
 
 def main():
     restaurante_praca.listar_cardapio
