@@ -1,28 +1,32 @@
-from modelos.restaurante import Restaurante
-from modelos.cardapio.bebidas import Bebidas
-from modelos.cardapio.prato import Prato
-from modelos.cardapio.sobremesas import Sobremesa
 
-##ADICIONANDO RESTAURANTE
-restaurante_praca = Restaurante('praça', 'Gourmet')
 
-##CRIANDO OS PRATOS EM DIFERENTES CLASSES
-bebida_suco = Bebidas('Suco de goiaba', 5.00,'Médio')
-prato_bife = Prato('Virado a paulista', 19.00, 'Bife delicioso com batata fritas')
-sobremesa_bolo = Sobremesa('Bolo de cenoura',25.00, 'Cenoura')
+def escolha():
+    while True:
+        try: 
+            escolha = int(input("Escolha um desses restaurantes para observar seu cardápio: \n" \
+            "1)Restaurante do bahiano\n2)Restaurante natural\n3)Burguer Restaurante\n- "))
+        except ValueError:
+            print("Erro! Número inválido")
+            continue
+        else:
+            return escolha
 
-##ADICIONANDO DESCONTOS NOS PRATOS
-bebida_suco.aplicar_desconto
-prato_bife.aplicar_desconto
-sobremesa_bolo.aplicar_desconto
+escolha_usuario = escolha()
 
-##ADICIONANDO OS PRATOS DENTRO DA CLASSE RESTAURANTE
-restaurante_praca.adicionar_item(prato_bife)  
-restaurante_praca.adicionar_item(bebida_suco) 
-restaurante_praca.adicionar_item(sobremesa_bolo) 
-
-def main():
-    restaurante_praca.listar_cardapio
+def main(escolha):
+    if escolha == 1:
+        from modelos.restaurantes import restaurante_bahiano
+        restaurante_bahiano.listar_cardapio
+    elif escolha ==2:
+        from modelos.restaurantes import  restaurante_natural
+        restaurante_natural.listar_cardapio
+    elif escolha ==3:
+        from modelos.restaurantes import  burguer_restaurante
+        burguer_restaurante.listar_cardapio
+    else:
+        print("Erro!")
 
 if __name__ == '__main__':
-    main()
+    main(escolha_usuario)
+
+print("\nObrigado!")
